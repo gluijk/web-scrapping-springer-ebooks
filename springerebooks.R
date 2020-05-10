@@ -33,7 +33,7 @@ for (i in 1:N) {
     enlace=html_nodes(pagina, xpath='//*[@id="main-content"]/article[1]/div/div/div[2]/div/div/a')
     if (length(enlace)==0) {  # No se ha encontrado enlace de solo PDF
         enlace=html_nodes(pagina, xpath='//*[@id="main-content"]/article[1]/div/div/div[2]/div/a')
-        if (length(enlace)==0) {  # No se ha encontrado enlace
+        if (length(enlace)==0) {  # Tampoco se ha encontrado enlace PDF/Epub
             texto="FAILED - No free PDF/Epub available"
             failed=failed+1
         } else {
@@ -44,7 +44,7 @@ for (i in 1:N) {
     }
     
     if (length(enlace)>0) {
-        enlace2=html_attr(enlace, "href")[1]  # Solo primer elemento (PDF)
+        enlace2=html_attr(enlace, "href")[1]  # Solo primer elemento (el PDF)
         base=gsub("/openurl.*", "", url)
         url_pdf=paste0(base, enlace2)
         download.file(url_pdf, destfile=nombre, mode='wb')
