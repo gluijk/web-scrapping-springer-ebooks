@@ -3,14 +3,11 @@
 
 library(rvest)
 
-setwd("D:/R/30_SpringerEbooks")
-
-rm(list=ls()) 
-
 iif = function(condicion, val1, val2) {
     if (condicion) return(val1)
     return(val2)
 }
+
 
 libros=read.csv("SpringerEbooks.csv", sep = ";", stringsAsFactors=F)
 N=nrow(libros)
