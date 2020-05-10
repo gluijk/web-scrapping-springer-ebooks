@@ -1,4 +1,4 @@
-# Ebooks gratuitos de Springer con R
+# Ebooks gratuitos de la editorial Springer con R
 # www.datosimagensonido.com
 
 library(rvest)
