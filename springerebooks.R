@@ -16,7 +16,7 @@ cat("", file="download.log")
 
 for (i in 1:N) {
     nombre=libros$BookTitle[i]
-    for (char in c('.','/',',',':',';',' ','-','_','@','®')) {  # Limpiamos nombre
+    for (char in c(".","/",",",":",";"," ","-","_","@","®")) {  # Limpiamos nombre
         nombre=gsub(char, "", nombre, fixed=T)  # Permitimos & y ++ 
     }
     numero=paste0(iif(i<10, "00", iif(i<100, "0", "")), i)
@@ -32,10 +32,10 @@ for (i in 1:N) {
             texto="FAILED - No free PDF/Epub available"
             failed=failed+1
         } else {
-            texto='OK     - Both PDF/Epub available'        
+            texto="OK     - Both PDF/Epub available"        
         }
     } else {
-        texto='OK     - Only PDF available'
+        texto="OK     - Only PDF available"
     }
     
     if (length(enlace)>0) {
@@ -45,9 +45,9 @@ for (i in 1:N) {
         download.file(url_pdf, destfile=nombre, mode='wb')
     }
     
-    texto=paste0(i, ": ", texto, " for '", nombre, "'", "\n")
+    texto=paste0(i, ": ", texto, " for '", nombre, "'\n")
     cat(texto, file="download.log", append=T)
 }
 
-cat(paste0('\n', failed, " failed files out of ", N, '\n'),
+cat(paste0("\n", failed, " failed files out of ", N, "\n"),
     file="download.log", append=T)
