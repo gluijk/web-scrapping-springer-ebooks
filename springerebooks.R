@@ -17,7 +17,7 @@ cat("", file="download.log")
 for (i in 1:N) {
     nombre=libros$BookTitle[i]
     for (char in c('.','/',',',':',';',' ','-','@','®')) {  # Limpiamos nombre
-        variable=gsub(char, "", variable, fixed=T)
+        nombre=gsub(char, "", nombre, fixed=T)
     }
     numero=paste0(iif(i<10, "00", iif(i<100, "0", "")), i)
     nombre=paste0(numero, "_", nombre, ".pdf")
