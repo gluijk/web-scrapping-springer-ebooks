@@ -9,14 +9,14 @@ iif = function(condicion, val1, val2) {
 }
 
 
-libros=read.csv("SpringerEbooks.csv", sep = ";", stringsAsFactors=F)
+libros=read.csv("SpringerEbooks.csv", sep=";", stringsAsFactors=F)
 N=nrow(libros)
 failed=0L
 cat("", file="download.log")
 
 for (i in 1:N) {
     nombre=libros$BookTitle[i]
-    for (char in c(".","/",",",":",";"," ","-","_","@","®")) {  # Limpiamos nombre
+    for (char in c(".","/",",",":",";"," ","-","_","@","®")) {  # Camel case
         nombre=gsub(char, "", nombre, fixed=T)  # Permitimos & y ++ 
     }
     numero=paste0(iif(i<10, "00", iif(i<100, "0", "")), i)
