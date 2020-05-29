@@ -1,5 +1,5 @@
 # Ebooks gratuitos de la editorial Springer con R
-# www.datosimagensonido.com
+# www.overfitting.net
 
 library(rvest)
 
@@ -16,7 +16,7 @@ cat("", file="download.log")
 
 for (i in 1:N) {
     nombre=libros$BookTitle[i]
-    for (char in c(".","/",",",":",";"," ","-","_","@","®")) {  # Camel case
+    for (char in c(".","/",",",":",";"," ","-","_","@","Â®")) {  # Camel case
         nombre=gsub(char, "", nombre, fixed=T)  # Permitimos & y ++ 
     }
     numero=paste0(iif(i<10, "00", iif(i<100, "0", "")), i)
